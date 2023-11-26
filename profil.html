@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="tr">
+
+<head>
+    <title>AntikApp - Sergi Alanım</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" href="style_profil.css">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <!-- navbar -->
+    <ul>
+        <li>
+            <img src="assets/images/letter-a.png" alt="Antik Logo" style="padding-top: 9px;">
+        </li>
+        <li><a href="#">AntikApp</a></li>
+        <li style="margin-left:28%"><a href="anasayfa.html">Anasayfa</a></li>
+        <li><a href="mezat.html">Mezat</a></li>
+        <li><a href="#" data-bs-toggle="offcanvas" data-bs-target="#sepet">Sepetim</a></li> 
+        <li><a href="#">Sergi Alanım</a></li>
+        <li id="nav_register" style="float: right; margin-right: 2rem;">
+            <button type="button" class="btn btn-warning btn-sm mt-2">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#login"
+                    style="color: black; padding: 5px; text-decoration: none;">Giriş Yap</a>
+            </button>
+            <button type="button" class="btn btn-warning btn-sm mt-2">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#register"
+                    style="color: black; padding: 5px; text-decoration: none;">Kayıt Ol</a>
+            </button>
+        </li>
+    </ul>
+    <!-- register modal kısmı -->
+    <div class="modal fade" id="register" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+        aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitleId">AntikApp Kayıt</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex justify-content-center align-items-center">
+                    <form action="#!" autocomplete="on" name="form_register" id="form_id_register" method="post">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input id="uname" name="uname" type="text" placeholder="Adınız" title="Adınız"
+                                            required autofocus="true">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input id="uemail" name="uemail" type="email" placeholder="E-mailiniz"
+                                            title="E-mail" required autofocus="true">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input id="upassword" name="upassword" type="password" placeholder="Şifreniz"
+                                            title="Şifreniz" required autofocus="true"></td>
+                                </tr>
+                                <tr>
+                                    <td><input id="upassword2" name="upassword2" type="password"
+                                            placeholder="Şifreniz (tekrar)" title="Şifreniz" required autofocus="true">
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex justify-content-center size">
+                                            <button type="submit" class="btn btn-outline-warning w-100 mt-1"
+                                                style="color: black; border-color: black;">Kayıt Ol</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p style="margin-top: 4rem; margin-bottom: 0;">Hesabınız var mı? <a href="#"
+                                                data-bs-toggle="modal" data-bs-target="#login"
+                                                style="color: #FFCA2C;"><b>Giriş yapın.</b></a></p>
+                                    </td>
+                                </tr>
+
+                            </tfoot>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- login modal kısmı -->
+    <div class="modal fade" id="login" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
+        aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitleId">AntikApp Giriş</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex justify-content-center align-items-center">
+                    <form action="#!" autocomplete="on" name="form_login" method="post" id="form_id_login">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input id="uemail" name="uemail" type="email" placeholder="E-mailiniz"
+                                            title="E-mail" required autofocus="true">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input id="upassword" name="upassword" type="password" placeholder="Şifreniz"
+                                            title="Şifreniz" required autofocus="true"></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex justify-content-center size">
+                                            <button type="submit" class="btn btn-outline-warning w-100 mt-1"
+                                                style="color: black; border-color: black;">Giriş Yap</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p style="margin-top: 4rem; margin-bottom: 0;">Hesabınız yok mu? <a href="#"
+                                                data-bs-toggle="modal" data-bs-target="#register"
+                                                style="color: #FFCA2C;"><b>Hesap oluşturun.</b></a></p>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>

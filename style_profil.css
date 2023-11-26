@@ -1,0 +1,38 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #09350fb6;
+}
+td{
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    width:auto;
+}
+td input{
+    padding-bottom: 1rem;
+    width: 20rem;
+    background-color: #4f6f5417;
+    
+}
+li {
+    float: left;
+    font-size: 24px;
+}
+
+li a {
+    display: block;
+    padding: 17px;
+    color: #D2E0FB;
+    text-decoration: none;
+}
+li a:hover{
+    color:#FFC107;
+}
