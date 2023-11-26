@@ -49,6 +49,10 @@ li a {
     color: #D2E0FB;
     text-decoration: none;
 }
+#website_name{
+    color: #FFC107;
+}
+
 
 li a:hover {
     color: #FFC107;
