@@ -13,7 +13,7 @@ body {
     justify-content: space-around;
     /*   space-around: Bu özellik, öğeleri yatayda eşit aralıklarla hizalar ve öğelerin kenar
      boşluklarını (padding) ve kenar çizgilerini (border) de hesaba katar. */
-     align-items: center;
+    align-items: center;
 }
 
 ul {
@@ -28,7 +28,7 @@ td {
     padding-bottom: 1rem;
     margin-bottom: 1rem;
     width: auto;
-    
+
 }
 
 td input {
@@ -49,7 +49,8 @@ li a {
     color: #D2E0FB;
     text-decoration: none;
 }
-#website_name{
+
+#website_name {
     color: #FFC107;
 }
 
@@ -59,20 +60,23 @@ li a:hover {
 }
 
 /* card kısımları css kısımları */
-.card img{
+.card img {
     width: 330px;
     height: 330px;
 }
-.card{
+
+.card {
     width: 330px;
     height: 380px;
     margin-bottom: 2rem;
     margin-top: 1rem;
 }
-.card-body{
-    background-color: #4F6F54 ;
+
+.card-body {
+    background-color: #4F6F54;
 }
-.card-body h4{
+
+.card-body h4 {
     background-color: #4F6F54;
     color: #D2E0FB;
     margin-top: 0px;
@@ -80,7 +84,36 @@ li a:hover {
     margin-left: -12px;
     height: 77px;
 }
+#sergi-parag{
+    margin:2rem;
+}
 
+#sergi-parag img {
+    width: 25%;
+    justify-content: center;
+    float: inline-end;
+    text-align: justify;
+    background-position: center;
+    border-radius: 10px;
+}
+
+#sergi-parag div {
+    background-color: #D2E0FB;
+    padding: 3%;
+    border-radius: 10px;
+    min-height: 33vh;
+}
+
+#urun-id{
+    color: #D2E0FB;
+}
+
+/* responsive design */
+@media (max-width: 700px) {
+    #sergi-parag div {
+        min-height: 25vh;
+    }
+}
 
 /* index.html navbar css kısımları */
 /* .navbar {
@@ -116,7 +149,8 @@ section div {
     width: 100%;
     background-color: #D2E0FB;
     margin: auto;
-    /* divi ortalamak için sağ sol üst ve alt için*//*
+    /* divi ortalamak için sağ sol üst ve alt için*/
+/*
 
 }
 
