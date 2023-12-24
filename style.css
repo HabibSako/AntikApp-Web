@@ -84,8 +84,9 @@ li a:hover {
     margin-left: -12px;
     height: 77px;
 }
-#sergi-parag{
-    margin:2rem;
+
+#sergi-parag {
+    margin: 2rem;
 }
 
 #sergi-parag img {
@@ -104,8 +105,60 @@ li a:hover {
     min-height: 33vh;
 }
 
-#urun-id{
+#urun-id {
     color: #D2E0FB;
+}
+
+/** sepet kısmı  */
+
+.basket_list {
+    list-style-type: none;
+    padding: 0.8rem;
+    background-color: white;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.basket_list h3{
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-style: 5px;
+}
+
+.basket_list span{
+    font-size: 1.2rem;
+}
+
+.basket_list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #D2E0FB;
+    margin-bottom: 2rem;
+}
+
+.product_count{
+    font-size: 1.5rem;
+    font-weight: bold;
+    
+}
+
+.increase{
+    color: #4F6F54;
+    cursor: pointer;
+}
+
+.decrease{
+    color: #4F6F54;
+    cursor: pointer;
+
+}
+
+.basket_total{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 5%;
 }
 
 /* responsive design */
