@@ -1,4 +1,5 @@
 let productsList = [];
+// json dosyasından veri alam
 const getProducts = () => {
     fetch("./products.json")
         .then((res) => res.json())
@@ -31,16 +32,18 @@ const createProductItemHtml = () => {
 
     productsListElement.innerHTML = productsListHtml;
 };
-setTimeout(() => {
-    createProductItemHtml();
-}, 100);
+
 
 //! sepete ürün ekleme
 let basketList = [];
 const listBasketItems = () => {
     const basketListElement = document.querySelector(".basket_list");
+    const totalPriceElement = document.querySelector(".total_price");
+
     let basketListHtml = "";
+    let totalPrice = 0;
     basketList.forEach(item => {
+        totalPrice += item.product.price;
         basketListHtml += `
         <li>
         <img src="${item.product.imgSource}"
@@ -49,35 +52,76 @@ const listBasketItems = () => {
         <div>
             <h3>${item.product.name}</h3>
             <span>${item.product.price}$</span><br>
-            <span>Ürünü sil</span>
+            <span class="product_remove" onClick="removeItemToBasket(${item.product.id})">Ürünü sil</span>
         </div>
         <div class="product_count mx-4">
-            <span class="decrease">-</span>
+            <span class="decrease" onclick="decreaseItemToBasket(${item.product.id})">-</span>
             <span>${item.quantity}</span>
-            <span class="increase">+</span>
+            <span class="increase" onclick="increaseItemToBasket(${item.product.id})">+</span>
         </div>
     </li>`;
     });
-    basketListElement.innerHTML= basketListHtml;
+    basketListElement.innerHTML = basketListHtml ? basketListHtml : `<p>Sepetiniz şu an için boş.</p>  `;
+    totalPriceElement.innerHTML = totalPrice > 0 ? "Toplam Tutar :" + totalPrice.toFixed(2) + "$" : null;
 }
 
-
+// ekleme
 const addToBasket = (id) => {
     let basketProduct = productsList.find(products => products.id == id);
     if (basketProduct) {
         // sepette önceden bulunan ürün
         const basketAlreadyIndex = basketList.findIndex(
-            (basket)=> basket.product.id == id
+            (basket) => basket.product.id == id
         );
         if (basketAlreadyIndex == -1) {
-            let addedItem = { quantity:1, product: basketProduct};
+            let addedItem = { quantity: 1, product: basketProduct };
             basketList.push(addedItem);
         }
-        else{
-            basketList[basketAlreadyIndex].quantity += 1;
+        else {
+            if (basketList[findedIndex].quantity < basketList[findedIndex].product.stock) {
+                basketList[basketAlreadyIndex].quantity += 1;
+                listBasketItems();
+            }else{ alert("Yeterince Stok Yok !!");
+            }
+            
         }
         listBasketItems();
         // kontrol
         console.log(basketList);
     }
 }
+// silme
+const removeItemToBasket = (id) => {
+    // ürünü bulma
+    const findedIndex = basketList.findIndex((basket) => basket.product.id == id);
+    if (findedIndex != -1) {
+        basketList.splice(findedIndex, 1);
+    }
+    // listeyi güncelleme
+    listBasketItems();
+}
+
+// arttırma ve azaltma işlemleri
+const decreaseItemToBasket = (id) => {
+    const findedIndex = basketList.findIndex((basket) => basket.product.id == id);
+    if (findedIndex != -1) {
+        if (basketList[findedIndex].quantity != 1) {
+            basketList[findedIndex].quantity -= 1;
+            listBasketItems();
+        }else removeItemToBasket(id);
+    }
+};
+const increaseItemToBasket = (id) => {
+    const findedIndex = basketList.findIndex((basket) => basket.product.id == id);
+    if (findedIndex != -1) {
+        if (basketList[findedIndex].quantity < basketList[findedIndex].product.stock) {
+            basketList[findedIndex].quantity += 1;
+            listBasketItems();
+        }else{ alert("Yeterince Stok Yok !!");
+        }
+    }
+};
+
+setTimeout(() => {
+    createProductItemHtml();
+}, 100);

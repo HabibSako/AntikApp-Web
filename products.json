@@ -7,7 +7,7 @@
         "oldPrice": null,
         "description": "Lorem ipsum dolor sit amet, consectetur adip occum soc norm ",
         "reviewCount": 100,
-        "stock": 1,
+        "stock": 3,
         "imgSource": "./assets/images/arjantin forma.jpg",
         "type": "Spor"
     },
@@ -31,7 +31,7 @@
         "oldPrice": null,
         "description": "Lorem ipsum dolor sit amet, consectetur adip occum soc norm ",
         "reviewCount": 100,
-        "stock": 1,
+        "stock": 4,
         "imgSource": "assets/images/arsenal forma.jpg",
         "type": "Spor"
     },
@@ -67,7 +67,7 @@
         "oldPrice": null,
         "description": "Lorem ipsum dolor sit amet, consectetur adip occum soc norm ",
         "reviewCount": 100,
-        "stock": 1,
+        "stock": 2,
         "imgSource": "assets/images/dikiş makinesi.jpg",
         "type": "Alet ve Makina"
     },
@@ -79,7 +79,7 @@
         "oldPrice": null,
         "description": "Lorem ipsum dolor sit amet, consectetur adip occum soc norm ",
         "reviewCount": 100,
-        "stock": 1,
+        "stock": 2,
         "imgSource": "assets/images/doğal taş koleksiyonu.jpg",
         "type": "Diğer"
     },

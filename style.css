@@ -123,6 +123,7 @@ li a:hover {
     font-size: 1.2rem;
     font-weight: bold;
     font-style: 5px;
+    max-width: 140px;
 }
 
 .basket_list span{
@@ -135,6 +136,9 @@ li a:hover {
     align-items: center;
     background-color: #D2E0FB;
     margin-bottom: 2rem;
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .product_count{
@@ -160,6 +164,13 @@ li a:hover {
     position: absolute;
     bottom: 5%;
 }
+
+.product_remove{
+    cursor: pointer;
+    color: #4F6F54;
+}
+/* toplam tutar */
+
 
 /* responsive design */
 @media (max-width: 700px) {
