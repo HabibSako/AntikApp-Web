@@ -1,5 +1,5 @@
 let productsList = [];
-// json dosyasından veri alam
+// json dosyasından veri alama
 const getProducts = () => {
     fetch("./products.json")
         .then((res) => res.json())
@@ -36,14 +36,43 @@ const createProductItemHtml = () => {
 
 //! sepete ürün ekleme
 let basketList = [];
+let totalPrice = 0;
 const listBasketItems = () => {
     const basketListElement = document.querySelector(".basket_list");
     const totalPriceElement = document.querySelector(".total_price");
 
     let basketListHtml = "";
-    let totalPrice = 0;
+    
     basketList.forEach(item => {
         totalPrice += item.product.price;
+        basketListHtml += `
+        <li>
+        <img src="${item.product.imgSource}"
+         width="100"
+          height="100">
+        <div>
+            <h3>${item.product.name}</h3>
+            <span>${item.product.price}$</span><br>
+            <span class="product_remove" onClick="removeItemToBasket(${item.product.id})">Ürünü sil</span>
+        </div>
+        <div class="product_count mx-4">
+            <span class="decrease" onclick="decreaseItemToBasket(${item.product.id})">-</span>
+            <span>${item.quantity}</span>
+            <span class="increase" onclick="increaseItemToBasket(${item.product.id})">+</span>
+        </div>
+    </li>`;
+    });
+    basketListElement.innerHTML = basketListHtml ? basketListHtml : `<p>Sepetiniz şu an için boş.</p>  `;
+    totalPriceElement.innerHTML = totalPrice > 0 ? "Toplam Tutar :" + totalPrice.toFixed(2) + "$" : null;
+}
+const listBasketItemsDecrease = () => {
+    const basketListElement = document.querySelector(".basket_list");
+    const totalPriceElement = document.querySelector(".total_price");
+
+    let basketListHtml = "";
+    
+    basketList.forEach(item => {
+        totalPrice -= item.product.price;
         basketListHtml += `
         <li>
         <img src="${item.product.imgSource}"
@@ -98,7 +127,7 @@ const removeItemToBasket = (id) => {
         basketList.splice(findedIndex, 1);
     }
     // listeyi güncelleme
-    listBasketItems();
+    listBasketItemsDecrease();
 }
 
 // arttırma ve azaltma işlemleri
@@ -107,7 +136,7 @@ const decreaseItemToBasket = (id) => {
     if (findedIndex != -1) {
         if (basketList[findedIndex].quantity != 1) {
             basketList[findedIndex].quantity -= 1;
-            listBasketItems();
+            listBasketItemsDecrease();
         }else removeItemToBasket(id);
     }
 };

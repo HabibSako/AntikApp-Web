@@ -112,29 +112,24 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body d-flex justify-content-center align-items-center">
-                    <form action="#!" autocomplete="on" name="form_register" id="form_id_register" method="post">
+                    <form  id="RegisterForm">
                         <table>
                             <tbody>
                                 <tr>
                                     <td>
-                                        <input id="uname" name="uname" type="text" placeholder="Adınız" title="Adınız"
+                                        <input id="nameInp" name="uname" type="text" placeholder="Adınız" title="Adınız"
                                             required autofocus="true">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input id="uemail1" name="uemail" type="email" placeholder="E-mailiniz"
+                                        <input id="emailInp" name="uemail" type="email" placeholder="E-mailiniz"
                                             title="E-mail" required autofocus="true">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><input id="upassword1" name="upassword" type="password" placeholder="Şifreniz"
+                                    <td><input id="passwordInp" name="upassword" type="password" placeholder="Şifreniz"
                                             title="Şifreniz" required autofocus="true"></td>
-                                </tr>
-                                <tr>
-                                    <td><input id="upassword2" name="upassword2" type="password"
-                                            placeholder="Şifreniz (tekrar)" title="Şifreniz" required autofocus="true">
-                                    </td>
                                 </tr>
                             </tbody>
                             <tfoot>
@@ -172,17 +167,17 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body d-flex justify-content-center align-items-center">
-                    <form action="#!" autocomplete="on" name="form_login" method="post" id="form_id_login">
+                    <form  id="LoginForm">
                         <table>
                             <tbody>
                                 <tr>
                                     <td>
-                                        <input id="uemail" name="uemail" type="email" placeholder="E-mailiniz"
+                                        <input id="emailInp2" name="uemail" type="email" placeholder="E-mailiniz"
                                             title="E-mail" required autofocus="true">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><input id="upassword" name="upassword" type="password" placeholder="Şifreniz"
+                                    <td><input id="passwordInp2" name="upassword" type="password" placeholder="Şifreniz"
                                             title="Şifreniz" required autofocus="true"></td>
                                 </tr>
                             </tbody>
@@ -492,6 +487,66 @@
     <!-- MDB -->
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+
+    <!-- firebase  -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        
+        const firebaseConfig = {
+          apiKey: "AIzaSyA5INyq_WAvl-QUL85weobb1HDJda73BOA",
+          authDomain: "antikapp-web.firebaseapp.com",
+          projectId: "antikapp-web",
+          storageBucket: "antikapp-web.appspot.com",
+          messagingSenderId: "31714077424",
+          appId: "1:31714077424:web:477b2258e3314b66eb3035",
+          measurementId: "G-463ED33PEB"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase();
+        const auth = getAuth(app);
+        const dbref = ref(db);
+
+        let NameInp = document.getElementById('nameInp');
+        let EmailInp = document.getElementById('emailInp');
+        let PassInp = document.getElementById('passwordInp');
+        let RegisterForm = document.getElementById('RegisterForm');
+
+        let LoginEmailInp = document.getElementById('emailInp2');
+        let LoginPassInp = document.getElementById('passwordInp2');
+        let LoginForm = document.getElementById('LoginForm');
+
+        let RegisterUser = evt => {
+            evt.preventDefault();
+
+            createUserWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
+            .then((credentials)=>{
+                console.log(credentials);
+            })
+            .catch((error) =>{
+                alert(error.message);
+                console.log(error.code);
+                console.log(error.message);
+            })
+        }
+        let LoginUser = evt => {
+            evt.preventDefault();
+
+            signInWithEmailAndPassword(auth, LoginEmailInp.value, LoginPassInp.value)
+            .then((credentials)=>{
+                console.log(credentials);
+            })
+            .catch((error) =>{
+                alert(error.message);
+                console.log(error.code);
+                console.log(error.message);
+            })
+        }
+        RegisterForm.addEventListener('submit', RegisterUser);
+        LoginForm.addEventListener('submit', LoginUser);
+
+      </script>
 
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
