@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "name": "X Markası Y Kolleksiyonu Spor Ayakkabı", 
+        "description": "X markasının 2014 yılında özel kolleksiyon olarak sadece 100 çift olarak çıkardığı ayakabı koleksiyonun 87. çiftidir.",
+        "author": "A kişisi",
+        "oldPrice": 2900,
+        "price": 5000,
+        "increaseAmount": 100,
+        "stock": 1,
+        "imgSource": "./assets/online müzayede/ayakkabı.jpg",
+        "type": "Giyim"
+    },
+    {
+        "id": 2,
+        "name": "Payorit Marka Daktilo", 
+        "description": "1954 yılı İngiliz üretimi katip daktilosudur.",
+        "author": "X Müzesi",
+        "oldPrice": 1750,
+        "price": 5000,
+        "increaseAmount": 150,
+        "stock": 1,
+        "imgSource": "./assets/online müzayede/daktilo.jpg",
+        "type": "Alet ve makina"
+    },
+    {
+        "id": 3,
+        "name": "Film Posterleri Kitabı", 
+        "description": "1900-1999 arası Hollywood'a yayınlanan filmlerin afiş ve posterlerinin toplandığı kitaptır.",
+        "author": "B kişisi",
+        "oldPrice": 450,
+        "price": 1000,
+        "increaseAmount": 25,
+        "stock": 1,
+        "imgSource": "./assets/online müzayede/film_poster.jpg",
+        "type": "Ev ve yaşam"
+    },
+    {
+        "id": 4,
+        "name": "Bizans Dönemi Madeni Para", 
+        "description": "1250-1350'li yıllar arasında üretildiği düşünülen Doğu Roma madeni para kolleksiyonudur. Exspertiz Raporu mevcuttur.",
+        "author": "Malatya X Müzesi",
+        "oldPrice": 1400,
+        "price": 5000,
+        "increaseAmount": 200,
+        "stock": 1,
+        "imgSource": "./assets/online müzayede/madeni_para.jpg",
+        "type": "Ev ve yaşam"
+    },
+    {
+        "id": 5,
+        "name": "Güncel 25 Ülkelesinin Para Kolleksiyonu", 
+        "description": "25 ülkeye ait güncel olarak tedavülde bulunan 84 adet kağıt baknotlarıdır. Güncel kurlarla sadece paraların değeri 3500 liradır.",
+        "author": "Z kişisi",
+        "oldPrice": 5000,
+        "price": 10000,
+        "increaseAmount": 300,
+        "stock": 1,
+        "imgSource": "./assets/online müzayede/old_money_koleksiyon.jpg",
+        "type": "Ev ve yaşam"
+    },
+    {
+        "id": 6,
+        "name": "Polarcid Marka Pronto600 Kamera", 
+        "description": "2000'li yılların başında üretilmiş ilk renkli fotoğraf çeken makinalardan biridir.",
+        "author": "X Kamera Dükkanı",
+        "oldPrice": 650,
+        "price": 1500,
+        "increaseAmount": 50,
+        "stock": 1,
+        "imgSource": "./assets/online müzayede/pronto_600.jpg",
+        "type": "Ev ve yaşam"
+    },
+    {
+        "id": 7,
+        "name": "Sculpture İlk Basım", 
+        "description": "Dünyaca ünlü romanın ilk bakısıdır. Koleksiyon değeri gün geçtikçe artmaktadır.",
+        "author": "X Kitapevi",
+        "oldPrice": 700,
+        "price": 1000,
+        "increaseAmount": 25,
+        "stock": 1,
+        "imgSource": "./assets/online müzayede/sulcuptre_kitap.jpg",
+        "type": "Ev ve yaşam"
+    }
+]

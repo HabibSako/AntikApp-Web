@@ -42,7 +42,7 @@ const listBasketItems = () => {
     const totalPriceElement = document.querySelector(".total_price");
 
     let basketListHtml = "";
-    
+
     basketList.forEach(item => {
         totalPrice += item.product.price;
         basketListHtml += `
@@ -70,7 +70,7 @@ const listBasketItemsDecrease = () => {
     const totalPriceElement = document.querySelector(".total_price");
 
     let basketListHtml = "";
-    
+
     basketList.forEach(item => {
         totalPrice -= item.product.price;
         basketListHtml += `
@@ -110,9 +110,10 @@ const addToBasket = (id) => {
             if (basketList[findedIndex].quantity < basketList[findedIndex].product.stock) {
                 basketList[basketAlreadyIndex].quantity += 1;
                 listBasketItems();
-            }else{ alert("Yeterince Stok Yok !!");
+            } else {
+                alert("Yeterince Stok Yok !!");
             }
-            
+
         }
         listBasketItems();
         // kontrol
@@ -137,7 +138,7 @@ const decreaseItemToBasket = (id) => {
         if (basketList[findedIndex].quantity != 1) {
             basketList[findedIndex].quantity -= 1;
             listBasketItemsDecrease();
-        }else removeItemToBasket(id);
+        } else removeItemToBasket(id);
     }
 };
 const increaseItemToBasket = (id) => {
@@ -146,7 +147,8 @@ const increaseItemToBasket = (id) => {
         if (basketList[findedIndex].quantity < basketList[findedIndex].product.stock) {
             basketList[findedIndex].quantity += 1;
             listBasketItems();
-        }else{ alert("Yeterince Stok Yok !!");
+        } else {
+            alert("Yeterince Stok Yok !!");
         }
     }
 };
