@@ -523,6 +523,7 @@
             createUserWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
             .then((credentials)=>{
                 console.log(credentials);
+                alert("Başarılı bir şekilde kayıt oldunuz.");
             })
             .catch((error) =>{
                 alert(error.message);
@@ -536,6 +537,7 @@
             signInWithEmailAndPassword(auth, LoginEmailInp.value, LoginPassInp.value)
             .then((credentials)=>{
                 console.log(credentials);
+                alert("Başarılı bir şekilde giriş yaptınız.");
             })
             .catch((error) =>{
                 alert(error.message);
