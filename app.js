@@ -156,6 +156,18 @@ const increaseItemToBasket = (id) => {
     listBasketItems();
 };
 
+// sepeti temizle
+const purchaseItems = () => {
+    if (basketList.length === 0) {
+        alert("Sepetinizde alınacak ürün bulunmamaktadır. Lütfen ürün ekleyin.");
+    } else {
+        basketList = []; // Sepeti temizle
+        totalPrice = 0; // Toplam tutarı sıfırla
+        listBasketItems(); // Güncellenmiş sepeti görüntüle
+        alert("Satın alma işlemi başarıyla tamamlandı. Teşekkür ederiz!");
+    }
+}
+
 setTimeout(() => {
     createProductItemHtml();
 }, 100);
