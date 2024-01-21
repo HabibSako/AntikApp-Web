@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
 
     <!-- Bootstrap CSS v5.2.1 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
@@ -207,81 +208,102 @@
         </div>
     </div>
     <!-- keşfet alanı -->
-    <div class="container">
-        <div class="row">
-            <div id="sergi-parag">
-                <div class="card-body">
-                    <img src="assets/images/dikiş makinesi.jpg" alt="dikiş makinesi">
-                    <h5 class="card-title" style="margin-bottom: 2rem;"><b><i>@kullanici1</i></b></h5>
-                    <p class="card-text">@kullanici1 kolleksiyonuna #urun1 ekledi.</p>
-                    <a href="#" style="margin-top: 1rem;" class="btn btn-primary btn-sm" data-mdb-ripple-init>Profile git</a>
-                </div>
+    
+    <div class="container mt-5">
+        <h2 style=" text-align : center;"> Paylaşım Ekranı</h2>
+        <!-- Paylaşım Formu -->
+        <form id="paylasimFormu">
+            <div class="form-group">
+                <label for="kullaniciAdiInput">Kullanıcı Adı:</label>
+                <input type="text" class="form-control" id="kullaniciAdiInput" placeholder="Kullanıcı adınızı girin"
+                    required>
             </div>
-            <div id="sergi-parag">
-                <div class="card-body">
-                    <img src="assets/images/ayakkabı koleksiyonu.jpg" alt="ayakabı koleksiyonu">
-                    <h5 class="card-title" style="margin-bottom: 2rem;"><b><i>@kullanici2</i></b></h5>
-                    <p class="card-text">@kullanici2 kolleksiyonunu sergileme moduna aldı.</p>
-                    <a href="#" style="margin-top: 1rem;" class="btn btn-primary btn-sm" data-mdb-ripple-init>Profile git</a>
-                </div>
+            <div class="form-group">
+                <label for="urunAdiInput">Aldığınız Ürün Adı:</label>
+                <input type="text" class="form-control" id="urunAdiInput" placeholder="Ürün adını girin" required>
             </div>
-            <div id="sergi-parag">
-                <div class="card-body">
-                    <img src="assets/images/pocket-watch-560937_640.jpg" alt="cep saati">
-                    <h5 class="card-title" style="margin-bottom: 2rem;"><b><i>@kullanici3</i></b></h5>
-                    <p class="card-text">@kullanici3 kolleksiyonuna #urun2 ekleyerek #kategori1'de 6. sıraya yükseldi.</p>
-                    <a href="#" style="margin-top: 1rem;" class="btn btn-primary btn-sm" data-mdb-ripple-init>Profile git</a>
-                </div>
+            <div class="form-group">
+                <label for="paylasimMetniInput">Paylaşım Metni:</label>
+                <textarea class="form-control" id="paylasimMetniInput" rows="3" placeholder="Paylaşım metnini girin"
+                    required></textarea>
             </div>
-            <div id="sergi-parag">
-                <div class="card-body">
-                    <img src="assets/images/doğal taş koleksiyonu.jpg" alt="taş koleksiyonu">
-                    <h5 class="card-title" style="margin-bottom: 2rem;"><b><i>@kullanici1</i></b></h5>
-                    <p class="card-text">@kullanici4 #urun7'yi alarak ilk parçasını aldı ve kolleksiyonuna ekledi.</p>
-                    <a href="#" style="margin-top: 1rem;" class="btn btn-primary btn-sm" data-mdb-ripple-init>Profile git</a>
-                </div>
+            <div class="form-group">
+                <label for="gorselInput">Görsel Eklemek İçin URL Giriniz:</label>
+                <input type="url" class="form-control" id="gorselInput" placeholder="Görsel URL'sini girin">
             </div>
-        </div>
+            <button type="button" class="btn btn-primary" onclick="paylasimYap()">Paylaş</button>
+        </form>
+
+        <hr>
+        <h2  style=" text-align : center; margin-top: 5rem;"> Son Paylaşılan Gönderiler </h2>
+        <!-- Paylaşımların Listesi -->
+        <div id="paylasimListesi"></div>
     </div>
 
+
     <script>
-        function shareBasketOnPostPage() {
-            // Sepet bilgisini al
-            var basketItems = getBasketItems();
-    
-            // Metin oluştur
-            var postText = "Bugün sepetimden aldığım ürünler: ";
-            for (var i = 0; i < basketItems.length; i++) {
-                postText += basketItems[i].product.name;
-                if (i < basketItems.length - 1) {
-                    postText += ", ";
-                }
-            }
-    
-            // Yeni gönderiyi oluştur
-            var newPost = document.createElement("div");
-            newPost.className = "card mb-3";
-            newPost.innerHTML = `
-                <div class="card-body">
-                    <p class="card-text">${postText}</p>
-                </div>`;
-    
-            // Yeni gönderiyi en üstte göster
-            var postsContainer = document.getElementById("posts-container");
-            postsContainer.insertBefore(newPost, postsContainer.firstChild);
+        // Paylaşılan verileri localStorage'de saklamak için bir anahtar belirle
+        var localStorageKey = 'paylasimlar';
+
+        // localStorage'dan paylaşılan verileri al
+        var paylasimlar = JSON.parse(localStorage.getItem(localStorageKey)) || [];
+
+        function paylasimYap() {
+            // Kullanıcıdan alınan değerleri al
+            var kullaniciAdi = document.getElementById('kullaniciAdiInput').value;
+            var urunAdi = document.getElementById('urunAdiInput').value;
+            var paylasimMetni = document.getElementById('paylasimMetniInput').value;
+            var gorselURL = document.getElementById('gorselInput').value;
+
+            // Yeni paylaşımı oluştur
+            var yeniPaylasim = {
+                kullaniciAdi: kullaniciAdi,
+                urunAdi: urunAdi,
+                paylasimMetni: paylasimMetni,
+                gorselURL: gorselURL
+            };
+
+            // Paylaşılan veriler dizisine ekle
+            paylasimlar.unshift(yeniPaylasim);
+
+            // Paylaşım listesini güncelle
+            guncellePaylasimListesi();
+
+            // localStorage'de güncellenmiş paylaşılan verileri sakla
+            localStorage.setItem(localStorageKey, JSON.stringify(paylasimlar));
+
+            // Formu temizle
+            document.getElementById('kullaniciAdiInput').value = '';
+            document.getElementById('urunAdiInput').value = '';
+            document.getElementById('paylasimMetniInput').value = '';
+            document.getElementById('gorselInput').value = '';
         }
-    
-        // Sepet bilgilerini almak için kullanılacak varsayılan bir fonksiyon
-        function getBasketItems() {
-            // Burada kullanıcının sepet bilgilerini alacak kodu ekleyebilirsiniz
-            // Örneğin: return basketList;
-            return [
-                { product: { name: "urun1" }, quantity: 1 },
-                { product: { name: "urun2" }, quantity: 2 },
-                { product: { name: "urun3" }, quantity: 1 }
-            ];
+
+        function guncellePaylasimListesi() {
+            // Paylaşım listesini temizle
+            var paylasimListesiElement = document.getElementById('paylasimListesi');
+            paylasimListesiElement.innerHTML = '';
+
+            // Her bir paylaşımı listeye ekle
+            paylasimlar.forEach(function (paylasim) {
+                var yeniPaylasim = document.createElement('div');
+                yeniPaylasim.className = 'row';
+                yeniPaylasim.innerHTML = `
+                <div id="sergi-parag">
+                    <div class="card-body">
+                        <img src="${paylasim.gorselURL}" alt="ürün görseli">
+                        <h5 class="card-title" style="margin-bottom: 2rem;"><b><i> Kullanıcı Adı :  @${paylasim.kullaniciAdi}</b></i></h5>
+                        <hr style="width: 75%; 75%; margin-left: 0;">
+                        <p class="card-text"><b>Ürün Adı:</b> ${paylasim.urunAdi}</p>
+                        <p class="card-text">${paylasim.paylasimMetni}</p>
+                    </div>
+                </div>
+                `;
+                paylasimListesiElement.appendChild(yeniPaylasim);
+            });
         }
     </script>
+
     <!-- MDB -->
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>

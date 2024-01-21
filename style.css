@@ -96,6 +96,7 @@ li a:hover {
     text-align: justify;
     background-position: center;
     border-radius: 10px;
+    max-height: 230px;
 }
 
 #sergi-parag div {
